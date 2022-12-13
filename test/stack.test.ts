@@ -1,5 +1,6 @@
 import { OrganizationProps, PersonProps, SkepStack, TeamProps } from '@skeptools/skep-core';
 import { App } from 'cdktf';
+import Timezone from 'timezone-enum';
 import { Factory } from '../src';
 
 type TeamType = 'team' | 'guild';
@@ -12,7 +13,7 @@ const fooBar = {
   role: 'engineering',
   integrations: {
     zenduty: {
-      foo: 'bar',
+      role: 'owner',
     },
   },
 } as PersonProps<Integrations, RoleType>;
@@ -24,7 +25,6 @@ const balBaz = {
   role: 'product',
   integrations: {
     zenduty: {
-      foo: 'bal',
     },
   },
 } as PersonProps<Integrations, RoleType>;
@@ -37,7 +37,9 @@ const fooTeam = {
   members: ['balBaz'],
   integrations: {
     zenduty: {
-      foo: 'bar',
+      secondaryType: 'following',
+      startsAt: new Date(2020, 1, 1),
+      timeZone: Timezone['America/New_York'],
     },
   },
 } as TeamProps<Integrations, PeopleKeys, TeamType>;
@@ -47,7 +49,6 @@ const barGuild = {
   leads: ['fooBar'],
   members: ['balBaz'],
   integrations: {
-    zenduty: {},
   },
   type: 'guild',
 } as TeamProps<Integrations, PeopleKeys, TeamType>;
@@ -58,7 +59,10 @@ const organization: OrganizationProps<Integrations> = {
   name: 'Test',
   integrations: {
     zenduty: {
-      foo: 'baz',
+      orgTeams: ['all'],
+      integrations: {
+        cloudwatch: '1ef0e211-82fb-454a-96c4-20bd26ebdcab',
+      },
     },
   },
 };

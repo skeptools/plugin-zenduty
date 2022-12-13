@@ -23,7 +23,7 @@ export class Factory<
   Organization,
   PersonProps,
   Person<RoleType>,
-  TeamProps,
+  TeamProps<PersonKeyType>,
   Team<TeamTypeType, PersonKeyType, RoleType>,
   ProviderParametersType
   > {

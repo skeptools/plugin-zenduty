@@ -48,7 +48,8 @@
     "@skeptools/skep-core": "~0",
     "cdktf": "~0",
     "constructs": "~10",
-    "projen": "~0"
+    "projen": "~0",
+    "timezone-enum": "~1"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
