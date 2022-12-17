@@ -15,7 +15,6 @@
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/tasks.json",
-    ".seed",
     "LICENSE",
     "tsconfig.dev.json",
     "tsconfig.json"

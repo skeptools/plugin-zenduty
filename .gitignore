@@ -50,7 +50,6 @@ junit.xml
 /dist/
 !/.eslintrc.json
 !/.github/settings.yml
-!/.seed
 *.d.ts
 *.js
 cdktf.out
