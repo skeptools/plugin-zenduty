@@ -801,10 +801,10 @@
     constructs "~10"
     timezone-enum "~1"
 
-"@skeptools/skep-plugin-project@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@skeptools/skep-plugin-project/-/skep-plugin-project-0.0.8.tgz#e4067bcfcae4638babab094e592f285a97082b4d"
-  integrity sha512-kyuO2iGWJYeJINy9RPRZAjXGOjbUyBcjDH46aKdc4Nz02adOLYSD/EH2NOZBwu8n0GbMg8eceoHrzGBLdbrYsA==
+"@skeptools/skep-plugin-project@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@skeptools/skep-plugin-project/-/skep-plugin-project-0.0.9.tgz#9098f592af11e72dbaebcf76d796fe0ca00b76d3"
+  integrity sha512-ka7xqKJxdmPIZYKBMpzZMtKuQETM3Xqn48vqkCZfjCvA5EcAMxV5ryVsxINeQoGmYeimdxBSNvbXUUqouikFeg==
   dependencies:
     "@rlmartin-projen/projen-project" "^0.0.15"
     liquidjs "~9"

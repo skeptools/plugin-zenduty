@@ -79,6 +79,9 @@
       "steps": [
         {
           "exec": "tsc --build"
+        },
+        {
+          "exec": "tsc --declaration"
         }
       ]
     },
