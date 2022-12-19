@@ -85,6 +85,11 @@
       "type": "peer"
     },
     {
+      "name": "timezone-enum",
+      "version": "~1",
+      "type": "peer"
+    },
+    {
       "name": "@skeptools/provider-zenduty",
       "type": "runtime"
     },

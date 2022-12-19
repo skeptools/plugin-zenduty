@@ -239,19 +239,19 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@skeptools/skep-core,cdktf,constructs,timezone-enum'"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,timezone-enum,@skeptools/skep-core,cdktf,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@skeptools/skep-core,cdktf,constructs,timezone-enum'"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,timezone-enum,@skeptools/skep-core,cdktf,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@skeptools/skep-core,cdktf,constructs,timezone-enum'"
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,timezone-enum,@skeptools/skep-core,cdktf,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@skeptools/skep-core,cdktf,constructs,timezone-enum'"
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,timezone-enum,@skeptools/skep-core,cdktf,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@skeptools/skep-core,cdktf,constructs,timezone-enum'"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,timezone-enum,@skeptools/skep-core,cdktf,constructs'"
         },
         {
           "exec": "yarn install --check-files"

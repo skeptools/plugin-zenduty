@@ -6,6 +6,7 @@ const project = new SkepPluginProject({
   cdktfProviderPackage: '@skeptools/provider-zenduty',
   defaultReleaseBranch: 'main',
   deps: ['timezone-enum@~1'],
+  peerDeps: ['timezone-enum@~1'],
   devDeps: ['@skeptools/skep-plugin-project'],
   name: '@skeptools/plugin-zenduty',
   projenrcTs: true,
