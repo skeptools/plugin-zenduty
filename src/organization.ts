@@ -1,5 +1,5 @@
 import * as zenduty from '@skeptools/provider-zenduty';
-import { BaseOrganization, BaseProps, OrganizationBaseProps, toKebabSlug } from '@skeptools/skep-core';
+import { BaseOrganization, BaseProps, OrganizationBaseProps, toKebabSlug, toTitleCase } from '@skeptools/skep-core';
 import { Construct } from 'constructs';
 
 export interface OrganizationProps extends BaseProps {
@@ -20,10 +20,13 @@ export class Organization extends BaseOrganization<OrganizationProps> {
     config: OrganizationProps & OrganizationBaseProps,
   ) {
     super(scope, namespace, config);
+    const { orgTeams = [] } = config;
+    const cleanOrgTeams = orgTeams.filter(_ => _.trim() !== '');
+    if (cleanOrgTeams.length === 0) cleanOrgTeams.push('everyone');
 
-    this._orgTeams = (config.orgTeams ?? []).map(teamName => {
+    this._orgTeams = cleanOrgTeams.map(teamName => {
       return new zenduty.teams.Teams(this, `${namespace}-${toKebabSlug(teamName)}-team`, {
-        name: teamName,
+        name: toTitleCase(teamName),
       });
     });
   }
