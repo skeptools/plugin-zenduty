@@ -41,14 +41,18 @@ export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
         firstName: this.firstName,
         lastName: this.lastName,
         role: roleId,
+        team: org.orgTeamIds[0],
       });
 
-      org.orgTeamIds.forEach(teamId => {
-        new zenduty.member.Member(this, `${this.slug}-${namespace}-member`, {
-          team: teamId,
-          user: this._user!.id,
-          role: teamRoleMap.get(zendutyRole),
-        });
+      org.orgTeamIds.forEach((teamId, index) => {
+        // Ignore first team in list because it is added on user creation above.
+        if (index > 0) {
+          new zenduty.member.Member(this, `${this.slug}-${namespace}-member`, {
+            team: teamId,
+            user: this._user!.id,
+            role: teamRoleMap.get(zendutyRole),
+          });
+        }
       });
     }
   }
