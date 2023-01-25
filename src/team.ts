@@ -169,7 +169,7 @@ export class Team<
       collation: 0,
     });
 
-    this._integrations = Object.entries(org._integrations).reduce((integrations, [name, applicationId]) => {
+    const inboundIntegrations = Object.entries(org._inboundIntegrations).reduce((integrations, [name, applicationId]) => {
       integrations[`${toKebabSlug(name)}_high_priority`] = new zenduty.integrations.Integrations(this, `${this.slug}-${namespace}-${toKebabSlug(name)}-integration-high-priority`, {
         name: 'High Priority Alerts',
         serviceId: defaultService.id,
@@ -188,6 +188,20 @@ export class Team<
       return integrations;
     }, Object.assign({}));
 
+    const outboundIntegrations = Object.entries(org._outboundIntegrations).reduce((integrations, [name, applicationId]) => {
+      integrations[`${toKebabSlug(name)}_outbound`] = new zenduty.integrations.Integrations(this, `${this.slug}-${namespace}-${toKebabSlug(name)}-integration-outbound`, {
+        name: `${toTitleCase(name)} Outbound`,
+        serviceId: defaultService.id,
+        teamId: this.teamId,
+        application: applicationId,
+        summary: `Outbound integration with ${toTitleCase(name)}`,
+      });
+      return integrations;
+    }, Object.assign({}));
+    this._integrations = {
+      ...inboundIntegrations,
+      ...outboundIntegrations,
+    };
   }
 
   private mergeGroupsWithPeople(rotationGroups: RotationGroup[], rotation: PersonKeyType[]): Map<RotationGroup, string[]> {

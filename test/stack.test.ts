@@ -60,8 +60,11 @@ const organization: OrganizationProps<Integrations> = {
   integrations: {
     zenduty: {
       orgTeams: ['all'],
-      integrations: {
+      inboundItegrations: {
         cloudwatch: '1ef0e211-82fb-454a-96c4-20bd26ebdcab',
+      },
+      outboundItegrations: {
+        jira: 'b04e5dc7-8a00-40eb-8ebb-0e2f08203dec',
       },
     },
   },

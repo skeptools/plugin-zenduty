@@ -7,7 +7,10 @@ export interface OrganizationProps extends BaseProps {
   readonly orgTeams?: string[];
   // Map of integration name => Zenduty applicationId (see https://www.zenduty.com/api/account/applications/)
   // for all integrations for a standard team.
-  readonly integrations: { [key: string]: string};
+  readonly inboundItegrations: { [key: string]: string};
+  // Map of integration name => Zenduty applicationId (see https://www.zenduty.com/api/account/applications/)
+  // for all integrations for a standard team.
+  readonly outboundItegrations?: { [key: string]: string};
   // TODO: teams for subGroups.
 }
 
@@ -31,8 +34,12 @@ export class Organization extends BaseOrganization<OrganizationProps> {
     });
   }
 
-  get _integrations(): { [key: string]: string } {
-    return this._props.integrations;
+  get _inboundIntegrations(): { [key: string]: string } {
+    return this._props.inboundItegrations;
+  }
+
+  get _outboundIntegrations(): { [key: string]: string } {
+    return this._props.outboundItegrations ?? {};
   }
 
   get orgTeamIds(): string[] {
