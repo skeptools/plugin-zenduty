@@ -1,7 +1,7 @@
 import { SkepPluginProject } from '@skeptools/skep-plugin-project';
 import { NpmAccess } from 'projen/lib/javascript';
 
-const majorVersion = 0;
+const majorVersion = 1;
 const project = new SkepPluginProject({
   cdktfProviderPackage: '@skeptools/provider-zenduty',
   defaultReleaseBranch: 'main',
