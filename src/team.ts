@@ -95,6 +95,9 @@ export class Team<
       teamId: this.teamId,
       layers: this.zendutyScheduleLayers(rotationGroupsWithPeople, rotationDays, startsAt, endsAt),
       timeZone,
+      lifecycle: {
+        ignoreChanges: ['overrides'],
+      },
     });
     schedules.push(primarySchedule);
 
@@ -123,6 +126,9 @@ export class Team<
         teamId: this.teamId,
         layers: this.zendutyScheduleLayers(rotationGroupsWithPeople, rotationDays, secondaryStartsAt, secondaryEndsAt),
         timeZone,
+        lifecycle: {
+          ignoreChanges: ['overrides'],
+        },
       });
       schedules.push(secondarySchedule);
     }
@@ -133,6 +139,9 @@ export class Team<
       teamId: this.teamId,
       layers: this.zendutyScheduleLayers(this.mergeGroupsWithPeople(rotationGroups, leadsOnCall), rotationDays, startsAt, endsAt),
       timeZone,
+      lifecycle: {
+        ignoreChanges: ['overrides'],
+      },
     });
     schedules.push(tertiarySchedule);
 
