@@ -7,7 +7,7 @@ import { Organization } from './organization';
 export type ZendutyRole = 'owner' | 'admin' | 'user'
 
 const userRoleMap: Map<ZendutyRole, number> = new Map([
-  ['owner', 2],
+  ['owner', 1],
   ['admin', 2],
   ['user', 3],
 ]);
