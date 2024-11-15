@@ -48,7 +48,7 @@ export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
         email: this.emailAddress,
         firstName: this.firstName,
         lastName: this.lastName,
-        role: rootUser ? undefined : roleId,
+        role: rootUser ? 1 : roleId,
         team: org.orgTeamIds[0],
         lifecycle: {
           preventDestroy: rootUser,
