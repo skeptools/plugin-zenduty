@@ -20,6 +20,14 @@ export const teamRoleMap: Map<ZendutyRole, number> = new Map([
 
 export interface PersonProps extends BaseProps {
   readonly role: ZendutyRole;
+  /**
+   * This is a special-case account:
+   * 1. Should only be one per org.
+   * 2. It will need to be imported into Terraform state, since it will already exist.
+   * 3. The role will be 1, but this is not exposed through the provider and cannot be edited.
+   * 4. It will be flagged to prevent deletion.
+   */
+  readonly rootUser?: boolean;
 }
 
 export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
@@ -32,7 +40,7 @@ export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
     config: PersonProps & PersonBaseProps<RoleType>,
   ) {
     super(scope, namespace, config);
-    const { role: zendutyRole } = config;
+    const { role: zendutyRole, rootUser = false } = config;
 
     const roleId: number | undefined = userRoleMap.get(zendutyRole);
     if (roleId) {
@@ -40,8 +48,11 @@ export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
         email: this.emailAddress,
         firstName: this.firstName,
         lastName: this.lastName,
-        role: roleId,
+        role: rootUser ? undefined : roleId,
         team: org.orgTeamIds[0],
+        lifecycle: {
+          preventDestroy: rootUser,
+        },
       });
 
       org.orgTeamIds.forEach((teamId, index) => {
