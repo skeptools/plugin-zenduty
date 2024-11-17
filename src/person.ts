@@ -28,12 +28,9 @@ export interface PersonProps extends BaseProps {
   readonly rootUser?: boolean;
 }
 
-interface InternalUser {
-  readonly id: string;
-}
-
 export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
-  _user?: InternalUser;
+  _dataUser?: zenduty.dataZendutyUser.DataZendutyUser;
+  _user?: zenduty.user.User;
 
   constructor(
     scope: Construct,
@@ -47,7 +44,7 @@ export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
     const roleId: number | undefined = userRoleMap.get(zendutyRole);
     if (roleId) {
       if (rootUser) {
-        this._user = new zenduty.dataZendutyUser.DataZendutyUser(this, `${this.slug}-${namespace}-root-user`, {
+        this._dataUser = new zenduty.dataZendutyUser.DataZendutyUser(this, `${this.slug}-${namespace}-root-user`, {
           email: this.emailAddress,
         });
       } else {
@@ -74,6 +71,9 @@ export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
   }
 
   get userId(): string | undefined {
+    if (this._dataUser) {
+      return this._dataUser.users.get(0).username;
+    }
     return this._user?.id;
   }
 }
