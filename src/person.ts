@@ -57,16 +57,19 @@ export class Person<RoleType> extends BasePerson<PersonProps, RoleType> {
         });
       }
 
-      org.orgTeamIds.forEach((teamId, index) => {
-        // Ignore first team in list because it is added on user creation above.
-        if (index > 0) {
-          new zenduty.member.Member(this, `${this.slug}-${namespace}-member`, {
-            team: teamId,
-            user: this._user!.id,
-            role: teamRoleMap.get(zendutyRole),
-          });
-        }
-      });
+      // Assume that the rootUser is used to create teams and thus is already in the team
+      if (!rootUser) {
+        org.orgTeamIds.forEach((teamId, index) => {
+          // Ignore first team in list because it is added on user creation above.
+          if (index > 0) {
+            new zenduty.member.Member(this, `${this.slug}-${namespace}-member`, {
+              team: teamId,
+              user: this._user!.id,
+              role: teamRoleMap.get(zendutyRole),
+            });
+          }
+        });
+      }
     }
   }
 
