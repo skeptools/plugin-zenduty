@@ -16,16 +16,16 @@ export class Factory<
   TeamTypeType extends string,
   RoleType
 > extends FactoryInterface<
-  PersonKeyType,
-  TeamTypeType,
-  RoleType,
-  OrganizationProps,
-  Organization,
-  PersonProps,
-  Person<RoleType>,
-  TeamProps<PersonKeyType>,
-  Team<TeamTypeType, PersonKeyType, RoleType>,
-  ProviderParametersType
+    PersonKeyType,
+    TeamTypeType,
+    RoleType,
+    OrganizationProps,
+    Organization,
+    PersonProps,
+    Person<RoleType>,
+    TeamProps<PersonKeyType>,
+    Team<TeamTypeType, PersonKeyType, RoleType>,
+    ProviderParametersType
   > {
   organizationConstructor = Organization;
   personConstructor = Person;

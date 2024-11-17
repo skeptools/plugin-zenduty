@@ -33,12 +33,12 @@ export class Team<
   PersonKeyType extends string,
   RoleType
 > extends BaseTeam<
-  PersonKeyType,
-  RoleType,
-  PersonProps,
-  Person<RoleType>,
-  TeamTypeType,
-  TeamProps<PersonKeyType>
+    PersonKeyType,
+    RoleType,
+    PersonProps,
+    Person<RoleType>,
+    TeamTypeType,
+    TeamProps<PersonKeyType>
   > {
   _team: zenduty.teams.Teams;
   _integrations: { [key: string]: zenduty.integrations.Integrations };

@@ -3,7 +3,7 @@ import { NpmAccess } from 'projen/lib/javascript';
 
 const majorVersion = 1;
 const project = new SkepPluginProject({
-  cdktfProviderPackage: '@skeptools/provider-zenduty',
+  cdktfProviderPackage: '@skeptools/provider-zenduty@~1',
   defaultReleaseBranch: 'main',
   deps: ['timezone-enum@~1'],
   peerDeps: ['timezone-enum@~1'],
@@ -12,6 +12,7 @@ const project = new SkepPluginProject({
   projenrcTs: true,
   releaseToNpm: true,
   npmAccess: NpmAccess.PUBLIC,
+  repository: 'https://github.com/skeptools/plugin-zenduty',
   majorVersion,
 
   // deps: [],                /* Runtime dependencies of this module. */
