@@ -1,5 +1,9 @@
 {
   "name": "@skeptools/plugin-zenduty",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skeptools/plugin-zenduty"
+  },
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",

@@ -12,6 +12,7 @@ const project = new SkepPluginProject({
   projenrcTs: true,
   releaseToNpm: true,
   npmAccess: NpmAccess.PUBLIC,
+  repository: 'https://github.com/skeptools/plugin-zenduty',
   majorVersion,
 
   // deps: [],                /* Runtime dependencies of this module. */
